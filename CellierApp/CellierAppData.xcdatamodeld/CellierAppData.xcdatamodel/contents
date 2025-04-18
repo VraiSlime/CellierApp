@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Consommation" representedClassName="Consommation" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WineBottle" inverseName="bottleConsommation" inverseEntity="WineBottle"/>
+    </entity>
+    <entity name="TastingNote" representedClassName="TastingNote" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="noteBottle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WineBottle" inverseName="bottleNote" inverseEntity="WineBottle"/>
+    </entity>
+    <entity name="UserPreference" representedClassName="UserPreference" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="showNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="theme" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="WineBottle" representedClassName="WineBottle" syncable="YES" codeGenerationType="class">
+        <attribute name="apiRegion" optional="YES" attributeType="String"/>
+        <attribute name="avgRating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageURL" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="purchaseLocation" optional="YES" attributeType="String"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reviewsCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="winery" optional="YES" attributeType="String"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="bottleConsommation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consommation" inverseName="relationship" inverseEntity="Consommation"/>
+        <relationship name="bottleNote" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TastingNote" inverseName="noteBottle" inverseEntity="TastingNote"/>
+    </entity>
+</model>
